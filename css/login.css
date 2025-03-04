@@ -1,0 +1,63 @@
+body {
+    
+    background-image: url("../assets/programmer.svg");
+    background-size: auto; 
+    background-repeat: space; 
+    background-position: center; 
+    width: 100vw;
+    height: 100vh;
+}
+
+#full-form{
+    box-shadow: 3px 2px 5px #f3e1e1;
+    margin-top: 55%;
+    border: 1px solid black;
+    border-radius: 7px;
+    background: linear-gradient(120deg, #948f76, #dfe7c6);
+}
+
+
+h2{
+    text-align: center;
+}
+
+.box{
+    width: 98%;
+    padding: 3%;
+}
+
+h5 a{
+    color: black;
+    font-size: medium;
+    font-weight: 400;
+    text-decoration: none;
+    margin-left: 63%;
+
+}
+
+h5 a:hover{
+
+    text-decoration: underline;
+}
+
+.btn{
+    width: 30%;
+}
+
+.box .error{
+    color: red;
+    margin-top: 5px;
+    margin-left: 14px;
+
+}
+
+.box.success input{
+    
+    border-color: #0cc477;
+    opacity: 100%;
+}
+
+.box.error input{
+    border-color: rgb(189, 42, 42);
+    opacity: 100%;
+}

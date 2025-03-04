@@ -1,0 +1,57 @@
+body {
+    
+    background-image: url("../assets/programmer.svg");
+    background-size: auto; 
+    background-repeat: space; 
+    background-position: center; 
+    width: 100vw;
+    height: 100vh;
+}
+
+
+#full-form{
+box-shadow: 3px 2px 5px #555;
+margin-top: 22%;
+border: 1px solid black;
+border-radius: 7px;
+background: linear-gradient(120deg, #948f76, #dfe7c6);
+}
+
+h2{
+    text-align: center;
+}
+
+.box{
+    width: 98%;
+    padding: 3%;
+}
+
+
+
+.last-btn:active{
+    cursor: pointer;
+    transition: 1ms;
+
+}
+
+#input2[readonly] {
+    background-color: #f0f0f0;  /* Light grey background */
+    cursor: not-allowed;        /* Change the cursor to indicate it's non-editable */
+}
+
+.box .error{
+    color: red;
+    margin-top: 5px;
+    margin-left: 14px;
+
+}
+
+.box.success input{
+    border-color: #0cc477;
+    opacity: 100%;
+}
+
+.box.error input{
+    border-color: rgb(189, 42, 42);
+    opacity: 100%;
+}
