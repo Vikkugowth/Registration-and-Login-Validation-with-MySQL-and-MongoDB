@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("full-form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Stop form submission
+        event.preventDefault(); 
 
         let isValid = true;
 
@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let confirmPassword = document.getElementById("input4").value.trim();
         let checkbox_input = document.getElementById("last-input").checked; 
 
-        // Validate Name
         if (name === "") {
             setError(document.getElementById("input1"), "Name is required");
             isValid = false;
@@ -26,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
             setSuccess(document.getElementById("input1"));
         }
 
-        // Validate Email
         let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email.match(emailPattern)) {
             setError(document.getElementById("input2"), "Enter a valid email ID");
@@ -35,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setSuccess(document.getElementById("input2"));
         }
 
-        // Validate Password
+        
         if (password === "") {
             setError(document.getElementById("input3"), "Enter the password");
             isValid = false;
@@ -46,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setSuccess(document.getElementById("input3"));
         }
 
-        // Validate Confirm Password
+        
         if (confirmPassword === "") {
             setError(document.getElementById("input4"), "Please re-enter the password");
             isValid = false;
@@ -57,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setSuccess(document.getElementById("input4"));
         }
 
-        // Validate Checkbox
+    
         if (!checkbox_input) {
             setError(document.getElementById("last-input"), "Tick this box to continue");
             isValid = false;
@@ -100,7 +98,6 @@ function setSuccess(element) {
 }
 
 
-// To send data to server using AJAX
 
     function upload_data(name, email, password) {
 
@@ -116,7 +113,7 @@ function setSuccess(element) {
                     $("#full-form")[0].reset();
                     window.location.href = "login.html";
                 } else  {
-                    // Check if the error message is due to duplicate email
+
                    if (response.message === "Email already registered. Try logging in.") {
                         alert(" This email is already registered. Try logging in with different e-mail id.");
                     }

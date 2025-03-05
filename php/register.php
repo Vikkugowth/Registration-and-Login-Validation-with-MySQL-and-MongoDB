@@ -8,12 +8,12 @@ header("Content-Type: application/json");
 include "../config/db.php";
 
 
-// Get data from AJAX
+
 $full_name = trim($_POST['full_name'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $password = trim($_POST['password'] ?? '');
 
-// Validate required fields
+
 if (empty($full_name) || empty($email) || empty($password)) {
     echo json_encode(["success" => false, "message" => "All fields are required"]);
     exit;

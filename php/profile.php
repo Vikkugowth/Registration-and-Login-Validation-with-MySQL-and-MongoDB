@@ -58,7 +58,7 @@ if ($action === 'updateuser') {
     $postData = json_decode($_POST['profiledata'], true);
 
     $name = $postData['name'];
-    $age = (int)$postData['age']; // Ensure integer type
+    $age = (int)$postData['age']; 
     $dob = $postData['DOB'];
     $contact =  $postData['contact'];
 
@@ -72,8 +72,8 @@ if ($action === 'updateuser') {
    
     // Updating in mongodb
     $updateResult = $collection->updateOne(
-        ["Email" => $mail], //  (find the correct use ny mail)
-        ['$set' => [        // Use $set to update only specific fields
+        ["Email" => $mail],      
+        ['$set' => [        
             "Name" => $name,
             "Age" => $age,
             "DOB" => $dob,
@@ -112,7 +112,7 @@ if ($action === 'getuserdata') {
                 "name" => $user["Name"] ?? '',
                 "email" => $user["Email"] ?? '',
                 "age" => $user["Age"] ?? '',
-                "dob" => $dob,  // Corrected format
+                "dob" => $dob,  
                 "contact" => $user["Contact"] ?? '',
             ]
             
@@ -132,12 +132,12 @@ if ($action === 'getuserdata') {
  if ($action === 'logout') {
     
 
-     // Check if session exists in Redis
+    
     
     $email = $redis->get("session:$token");
 
     if ($email) {
-        // Delete session from Redis
+    
         $redis->del("session:$token");
 
          echo json_encode(["success" => true, "message" => "Logout successful"]);

@@ -15,7 +15,7 @@ try {
  
 
 } catch (Exception $e) {
-    // Catch and display connection errors
+  
     die("MongoDB Connection Error: " . $e->getMessage());
 }
 

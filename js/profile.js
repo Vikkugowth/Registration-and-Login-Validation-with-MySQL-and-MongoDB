@@ -5,12 +5,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (!token) {
         alert("You are not logged in. Please log in first.");
-        window.location.href = "login.html"; // Redirect to login if no token
+        window.location.href = "login.html"; 
         return;
     }
 
 
-   
         // If profile exists, fetch updated data from MongoDB
         fetchUpdatedUserData(token);
    
@@ -52,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         
         if (!validateForm()) {
-            return; // If validation fails, stop form submission
+            return; 
         }
 
         let profiledata = {
@@ -111,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let contact = document.getElementById("input5").value.trim();
 
 
-    // Fields validation
+  
     if (name === "") {
         setError(document.getElementById("input1"), "Enter your full name");
         isValid = false;
@@ -221,8 +220,7 @@ document.addEventListener("DOMContentLoaded", function() {
             success: function(response) {
                 console.log("Logout Response:", response);
                 if (response.success === true) {
-                    // Clear LocalStorage
-                    localStorage.removeItem("session_token");
+                    localStorage.removeItem("session_token");      // Clear LocalStorage
                     localStorage.removeItem("user_data");
                     alert("Logout successful!");
                     window.location.href = "login.html";

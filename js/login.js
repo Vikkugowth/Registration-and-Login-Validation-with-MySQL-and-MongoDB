@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
  document.getElementById("full-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault(); 
     
 
     let isValid = true;
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let password = document.getElementById("input2").value.trim();
 
 
-    // Email validation
+   
     if (email === "") {
         setError(document.getElementById("input1"), "Enter a email ID");
         isValid = false;
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setSuccess(document.getElementById("input1"));
     }
 
-    // Password validation
+
     if (password === "") {
         setError(document.getElementById("input2"), "Enter the password");
         isValid = false;
