@@ -1,0 +1,23 @@
+name: Deploy to InfinityFree
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment when you push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # This means GitHub will use Ubuntu to run the deployment
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # This action checks out the code from your repository
+
+      - name: Upload to InfinityFree via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          ftp-server: ftp.yourdomain.com  # Replace this with your FTP server URL
+          ftp-username: your-ftp-username  # Replace this with your FTP username
+          ftp-password: ${{ secrets.FTP_PASSWORD }}  # Use GitHub secrets for security
+          local-dir: ./  # This uploads all the contents from the root of the repo
+          remote-dir: /htdocs  # This is the folder on InfinityFree where files will be uploaded
