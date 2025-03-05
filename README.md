@@ -9,7 +9,7 @@ Clone this repository to your local machine.
 
 Install MongoDB and MySQL on your local machine
 
-Import the users.sql file into your MySQL database.
+Import the .sql file into your MySQL database.
 
 Update the config.php file with your MySQL database credentials.
 
