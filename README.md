@@ -47,3 +47,6 @@ Submit the form to update your profile details.
 
 If the update is successful, you will be redirected to the profile page. If you have any issues with sign-up, login, or updating your account details, please contact the project owner for assistance.
 
+Credits
+
+This project was created by [Pradeep G]. If you have any questions or feedback, please contact me at [vikkugowth@gmail.com].
