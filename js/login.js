@@ -88,10 +88,9 @@ function login_data(email, password) {
             
             let res = response
             if (res.success === true) {
-                localStorage.setItem("session_token", res.token); // Save token
-                alert("Login successful!");
+                localStorage.setItem("session_token", res.token); 
                 console.log(res)
-                window.location.href = "profile.html"; // Redirect
+                window.location.href = "profile.html"; 
             } else {
                
                 if (response.message === "User not found") {

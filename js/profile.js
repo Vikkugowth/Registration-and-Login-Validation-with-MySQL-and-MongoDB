@@ -3,15 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let token = localStorage.getItem("session_token");
     console.log("Token generated successfully:", token)
 
-    if (!token) {
-        alert("You are not logged in. Please log in first.");
-        window.location.href = "login.html"; 
-        return;
-    }
-
-
-        // If profile exists, fetch updated data from MongoDB
-        fetchUpdatedUserData(token);
+       
+       
    
         // First-time login: fetch name & email from MySQL
         $.ajax({
@@ -24,16 +17,18 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (response.success === true) {
                     $("#input1").val(response.name);
                     $("#input2").val(response.email);
+                
                     localStorage.setItem("user_data", JSON.stringify(response));
+                   
+                    fetchUpdatedUserData(token);
+                  
                 } else {
                     alert(response.message);
+                    window.location.href = "login.html";
                     console.log(response.message);
                 }
             },
-            error: function(xhr, status, error) {
-                console.log("Error:", error);
-                alert("Failed to fetch user details. Try again.");
-            }
+            
         });
     
 
@@ -42,13 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     $("#update-btn").click(function() {
         
-        let token = localStorage.getItem("session_token"); // Get token
-        
-        if (!token) {
-            alert("Session expired. Please log in again.");
-            window.location.href = "login.html";
-            return;
-        }
         
         if (!validateForm()) {
             return; 
@@ -78,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     
 
                 } else {
-                  alert (response.message);
+                   alert(response.message);
                }
 
             
@@ -99,14 +87,12 @@ document.addEventListener("DOMContentLoaded", function() {
      // Clear previous error messages
     document.getElementById("nameError").innerText = "";
     document.getElementById("AgeError").innerText = "";
-    document.getElementById("DOBError").innerText ="";
     document.getElementById("ContactError").innerText ="";
     
   
     // Get user input
     let name = document.getElementById("input1").value.trim();
     let age = document.getElementById("input3").value.trim();
-    let DOB = document.getElementById("input4").value.trim();
     let contact = document.getElementById("input5").value.trim();
 
 
@@ -130,14 +116,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     
-    if (DOB === "") {
-        setError(document.getElementById("input4"), "Enter your date of birth");
-        isValid = false;
-   
-    }
-    else{
-        setSuccess(document.getElementById("input4"));
-    }
     
     let contactRegex = /^[0-9]{10}$/;
 
@@ -189,25 +167,22 @@ document.addEventListener("DOMContentLoaded", function() {
             dataType: "json",
             success: function(response) {
                 if (response.success) {
-
                     $("#input1").val(response.user_data.name);
                     $("#input2").val(response.user_data.email);
                     $("#input3").val(response.user_data.age);
                     $("#input5").val(response.user_data.contact);
-
-                    if (response.user_data.dob) {
-                        let formattedDOB = new Date(response.user_data.dob).toISOString().split('T')[0];
-                        $("#input4").val(formattedDOB);
-                    }
-                } else {
-                    alert(response.message);
-                }
+    
+                } else if (response.message === "session expired") {
+                    alert("Session expired, please log in again.");
+                    window.location.href = "login.html";
+                } else (response.message)
             },
             error: function(xhr, status, error) {
                 console.log("Error:", error);
             }
         });
     }
+    
     
     $("#logout-btn").click(function() {
      

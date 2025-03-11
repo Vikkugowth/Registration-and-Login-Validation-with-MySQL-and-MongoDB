@@ -51,7 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     "Email" => $email,
                     "Name" => $row['Name'],
                     "Age" => "",
-                    "DOB" => "",
                     "Contact" => ""
                 ]);
 

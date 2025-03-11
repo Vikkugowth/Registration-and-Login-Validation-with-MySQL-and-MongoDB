@@ -1,32 +1,36 @@
-    <?php
+<?php
 
-        require '../vendor/autoload.php';
-        
-        use Predis\Client;
+require '../vendor/autoload.php';
 
-        class RedisConnection
-        {
-            public function getConnection() {
-                try {
-                     $redis = new Predis\Client([
-                        'host'     => 'redis-14855.c305.ap-south-1-1.ec2.redns.redis-cloud.com',
-                        'port'     => 14855,
-                        'username' => 'default', 
-                        'password' => 'Txrq85KiJPkiOatGhXqDsmPEBgZNx3Az',
-                    ]);
+use Predis\Client;
 
-                    return $redis; 
+class RedisConnection
+{
+    public function getConnection() {
+        try {
+             $redis = new Predis\Client([
+                'host'     => 'redis-14855.c305.ap-south-1-1.ec2.redns.redis-cloud.com',
+                'port'     => 14855,
+                'username' => 'default', 
+                'password' => 'Txrq85KiJPkiOatGhXqDsmPEBgZNx3Az',
+            ]);
 
-                } catch (Exception $e) {
-                    die("Redis Connection Failed: " . $e->getMessage());
-                }
-            }
+            return $redis; 
+
+        } catch (Exception $e) {
+            die("Redis Connection Failed: " . $e->getMessage());
         }
+    }
+}
 
-        // Instantiate the class and get Redis connection
-        $redisConnection = new RedisConnection();
-        $redis = $redisConnection->getConnection(); 
+// Instantiate the class and get Redis connection
+$redisConnection = new RedisConnection();
+$redis = $redisConnection->getConnection(); 
 
 
-    ?>
+?>
+
+
+
+
 

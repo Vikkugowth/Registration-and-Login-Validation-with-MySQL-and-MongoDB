@@ -109,8 +109,7 @@ function setSuccess(element) {
             success: function (response) {
                 
              if (response.success) {
-                    alert("Registration successful!");
-                    $("#full-form")[0].reset();
+                   
                     window.location.href = "login.html";
                 } else  {
 

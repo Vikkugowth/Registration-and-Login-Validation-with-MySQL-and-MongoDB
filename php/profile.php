@@ -31,7 +31,9 @@ $token = ($_POST['token'] ?? '');
                 "name" => $user['Name'],
                 "email" => $user['Email']
              ]);
-
+            
+             $stmt->close();
+             $conn->close();
              exit();
         } else {
             echo json_encode(["success" => false, "message" => "User not found"]);
@@ -40,8 +42,7 @@ $token = ($_POST['token'] ?? '');
     }
  
 
-  $stmt->close();
-  $conn->close();
+  
  
 }
 
@@ -51,7 +52,7 @@ if ($action === 'updateuser') {
     $mail = $redis->get("session:$token");
 
     if (!$mail) {
-        echo json_encode(["success" => false, "message" => "Session expired. Please log in again."]);
+        echo json_encode(["success" => false, "message" => "session expired"]);
         exit;
     }
 
@@ -59,10 +60,9 @@ if ($action === 'updateuser') {
 
     $name = $postData['name'];
     $age = (int)$postData['age']; 
-    $dob = $postData['DOB'];
     $contact =  $postData['contact'];
 
-    if (empty($name) || empty($dob) || empty($contact) || empty($age)) {
+    if (empty($name) || empty($contact) || empty($age)) {
         echo json_encode(["success" => false, "message" => "All fields are required"]);
         exit();
     }
@@ -76,7 +76,6 @@ if ($action === 'updateuser') {
         ['$set' => [        
             "Name" => $name,
             "Age" => $age,
-            "DOB" => $dob,
             "Contact" => $contact
         ]]
     );
@@ -84,14 +83,14 @@ if ($action === 'updateuser') {
     if ($updateResult->getModifiedCount() > 0) { 
         echo json_encode(["success" => true, "message" => "Profile updated successfully"]);
     } else {
-        echo json_encode(["success" => false, "message" => "Incorrect E-mail id or you have not updated anything."]);
+        echo json_encode(["success" => false, "message" => "You have not updated anything."]);
         exit();
     }
 }
 
 
 if ($action === 'getuserdata') {
-    $token = $_POST['token'] ?? '';
+    
     $mail = $redis->get("session:$token");
 
     if (!$mail) {
@@ -103,36 +102,27 @@ if ($action === 'getuserdata') {
     $user = $collection->findOne(["Email" => $mail]);
 
     if ($user) {
-        // Ensure DOB is returned in YYYY-MM-DD format
-        $dob = isset($user["DOB"]) ? date("Y-m-d", strtotime($user["DOB"])) : '';
-
+        
         echo json_encode([
             "success" => true,
             "user_data" => [
                 "name" => $user["Name"] ?? '',
                 "email" => $user["Email"] ?? '',
-                "age" => $user["Age"] ?? '',
-                "dob" => $dob,  
-                "contact" => $user["Contact"] ?? '',
+                "age" => $user["Age"] ?? '', 
+                "contact" => $user["Contact"] ?? ''
             ]
             
         ]);
 
         exit();
         
-    } else {
-        echo json_encode(["success" => false, "message" => "User not found."]);
-    }
+    } 
 }
 
 
 
 
-
  if ($action === 'logout') {
-    
-
-    
     
     $email = $redis->get("session:$token");
 
