@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };   
     
         $.ajax({
-            url: "php/profile.php",
+            url: "/Guvi-Intern/php/profile.php",
             type: "POST",   
             data: { 
                 action: "updateuser", 
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function fetchUpdatedUserData(token) {
         $.ajax({
-            url: "php/profile.php",
+            url: "/Guvi-Intern/php/profile.php",
             type: "POST",
             data: { action: "getuserdata", token: token },
             dataType: "json",
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
      
     
         $.ajax({
-            url: "/php/profile.php",
+            url: "/Guvi-Intern/php/profile.php",
             type: "POST",
             data: { action: "logout", token: token },
             dataType: "json",
