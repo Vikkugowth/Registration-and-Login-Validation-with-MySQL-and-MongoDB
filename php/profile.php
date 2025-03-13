@@ -5,9 +5,9 @@ ini_set('display_errors', 1);
 
 header("Content-Type: application/json");
 
-require '../config/db.php'; 
-require '../config/redis.php';
-require '../config/mongodb.php'; 
+include '../config/db.php'; 
+include '../config/redis.php';
+include '../config/mongodb.php'; 
 
 
 

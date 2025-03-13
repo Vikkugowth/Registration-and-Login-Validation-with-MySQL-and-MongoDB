@@ -79,7 +79,7 @@ function setSuccess(element) {
 function login_data(email, password) {
     
     $.ajax({
-        url: "/php/login.php",
+        url: "/Guvi-Intern/php/login.php",
         type: "POST",
         data: { email: email, password: password },
         dataType: "json",

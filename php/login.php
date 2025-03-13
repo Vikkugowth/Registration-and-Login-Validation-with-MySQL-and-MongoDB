@@ -8,9 +8,9 @@ header("Content-Type: application/json");
 
 
 
-include '../config/db.php';   
-require '../config/redis.php';
-require '../config/mongodb.php'; 
+include "../config/db.php";   
+include "../config/redis.php";
+include "../config/mongodb.php"; 
 
 
 
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     "Email" => $email,
                     "Name" => $row['Name'],
                     "Age" => "",
-                    "Contact" => ""
+                        "Contact" => ""
                 ]);
 
             }

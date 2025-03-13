@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
    
         // First-time login: fetch name & email from MySQL
         $.ajax({
-            url: "/php/profile.php",
+            url: "/Guvi-Intern/php/profile.php",
             type: "POST",
             data: { action: "fetch", token: token },
             dataType: 'json',

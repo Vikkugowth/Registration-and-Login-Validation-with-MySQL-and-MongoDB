@@ -102,7 +102,7 @@ function setSuccess(element) {
     function upload_data(name, email, password) {
 
         $.ajax({
-            url: "/php/register.php",
+            url: "/Guvi-Intern/php/register.php",
             type: "POST",
             data: { full_name: name, email: email, password: password },
             dataType: "json",
