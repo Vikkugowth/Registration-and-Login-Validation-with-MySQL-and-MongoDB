@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let confirmPassword = document.getElementById("input4").value.trim();
         let checkbox_input = document.getElementById("last-input").checked; 
 
-        if (name === "") {
+        if (name === "" && !/^[A-Za-z\s]+$/.test(name)) {
             setError(document.getElementById("input1"), "Name is required");
             isValid = false;
         } else {
