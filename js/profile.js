@@ -45,8 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let profiledata = {
             name: $("#input1").val(),
             age: $("#input3").val(),
-            DOB: $("#input4").val(),
-            contact: $("#input5").val()
+            contact: $("#input4").val()
         };   
     
         $.ajax({
@@ -93,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Get user input
     let name = document.getElementById("input1").value.trim();
     let age = document.getElementById("input3").value.trim();
-    let contact = document.getElementById("input5").value.trim();
+    let contact = document.getElementById("input4").value.trim();
 
 
   
@@ -120,12 +119,12 @@ document.addEventListener("DOMContentLoaded", function() {
     let contactRegex = /^[0-9]{10}$/;
 
     if (contact === "" || !contactRegex.test(contact)) {
-        setError(document.getElementById("input5"), "Enter a valid contact number");
+        setError(document.getElementById("input4"), "Enter a valid contact number");
         isValid = false;
    
     }
     else{
-        setSuccess(document.getElementById("input5"));
+        setSuccess(document.getElementById("input4"));
     }
     
     return(isValid);
@@ -170,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     $("#input1").val(response.user_data.name);
                     $("#input2").val(response.user_data.email);
                     $("#input3").val(response.user_data.age);
-                    $("#input5").val(response.user_data.contact);
+                    $("#input4").val(response.user_data.contact);
     
                 } else if (response.message === "session expired") {
                     alert("Session expired, please log in again.");

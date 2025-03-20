@@ -29,6 +29,10 @@ max-width: 32rem;
     opacity: 100%;
 }
 
+.box.success #input1{
+    border-color: white;
+}
+
 .box.error input{
     border-color: rgb(189, 42, 42);
     opacity: 100%;
