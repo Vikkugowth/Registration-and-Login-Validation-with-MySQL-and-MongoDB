@@ -99,32 +99,32 @@ function setSuccess(element) {
 
 
 
-    function upload_data(name, email, password) {
+function upload_data(name, email, password) {
 
-        $.ajax({
-            url: "/Guvi-Intern/php/register.php",
-            type: "POST",
-            data: { full_name: name, email: email, password: password },
-            dataType: "json",
-            success: function (response) {
-                
-             if (response.success) {
-                   
-                    window.location.href = "login.html";
-                } else  {
+    $.ajax({
+        url: "/Guvi-Intern/php/register.php",
+        type: "POST",
+        data: { full_name: name, email: email, password: password },
+        dataType: "json",
+        success: function (response) {
+            
+         if (response.success) {
+               
+                window.location.href = "login.html";
+            } else  {
 
-                   if (response.message === "Email already registered. Try logging in.") {
-                        alert(" This email is already registered. Try logging in with different e-mail id.");
-                    }
-                    
-                
-                else {
-                    alert("Error: " + response.message);
-                    }
-
+               if (response.message === "Email already registered. Try logging in.") {
+                    alert(" This email is already registered. Try logging in with different e-mail id.");
                 }
+                
+            
+            else {
+                alert("Error: " + response.message);
+                }
+
             }
-        });
-    }
+        }
+    });
+}
 
 
