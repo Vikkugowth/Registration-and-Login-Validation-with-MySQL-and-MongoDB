@@ -98,7 +98,6 @@ function setSuccess(element) {
 }
 
 
-
 function upload_data(name, email, password) {
 
     $.ajax({
