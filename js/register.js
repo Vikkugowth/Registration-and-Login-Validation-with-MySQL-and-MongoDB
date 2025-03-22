@@ -116,6 +116,7 @@ function setSuccess(element) {
                    if (response.message === "Email already registered. Try logging in.") {
                         alert(" This email is already registered. Try logging in with different e-mail id.");
                     }
+                    
                 
                 else {
                     alert("Error: " + response.message);
